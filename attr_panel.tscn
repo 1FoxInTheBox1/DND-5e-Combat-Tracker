@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://cknc4fijh1a2a"]
+
+[ext_resource type="Script" path="res://attr_panel.gd" id="1_phj6y"]
+
+[node name="AttrPanel" type="VBoxContainer"]
+size_flags_horizontal = 3
+script = ExtResource("1_phj6y")
+attrName = "STR"
+
+[node name="StatName" type="Label" parent="."]
+layout_mode = 2
+text = "STR"
+
+[node name="StatMod" type="Label" parent="."]
+layout_mode = 2
+text = "+0"
+
+[node name="StatNum" type="SpinBox" parent="."]
+layout_mode = 2
+max_value = 40.0
+rounded = true
+custom_arrow_step = 1.0
+select_all_on_focus = true

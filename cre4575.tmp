@@ -1,0 +1,97 @@
+[gd_scene load_steps=4 format=3 uid="uid://c05hef2cshoiu"]
+
+[ext_resource type="Script" path="res://creature.gd" id="1_kam53"]
+[ext_resource type="PackedScene" uid="uid://dotxkyg533apx" path="res://attr_display.tscn" id="1_vrw0d"]
+[ext_resource type="PackedScene" uid="uid://nw1wl3db5vk0" path="res://hp_display.tscn" id="2_4qb2h"]
+
+[node name="Creature" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kam53")
+creatureName = "Creature"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CreatureNameBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="LineEdit" parent="VBoxContainer/CreatureNameBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Creature Name"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/CreatureNameBox"]
+layout_mode = 2
+
+[node name="InitiativeLabel" type="Label" parent="VBoxContainer/CreatureNameBox/VBoxContainer"]
+layout_mode = 2
+text = "Initiative:"
+
+[node name="InitiativeAmount" type="SpinBox" parent="VBoxContainer/CreatureNameBox/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+max_value = 40.0
+
+[node name="CreatureInfoBox" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="SizeOptions" type="OptionButton" parent="VBoxContainer/CreatureInfoBox"]
+layout_mode = 2
+item_count = 6
+popup/item_0/text = "Tiny"
+popup/item_0/id = 0
+popup/item_1/text = "Small"
+popup/item_1/id = 1
+popup/item_2/text = "Medium"
+popup/item_2/id = 2
+popup/item_3/text = "Large"
+popup/item_3/id = 3
+popup/item_4/text = "Huge"
+popup/item_4/id = 4
+popup/item_5/text = "Gergantuan"
+popup/item_5/id = 5
+
+[node name="TypeOptions" type="OptionButton" parent="VBoxContainer/CreatureInfoBox"]
+layout_mode = 2
+item_count = 14
+popup/item_0/text = "Aberration"
+popup/item_0/id = 0
+popup/item_1/text = "Beast"
+popup/item_1/id = 1
+popup/item_2/text = "Celestial"
+popup/item_2/id = 2
+popup/item_3/text = "Construct"
+popup/item_3/id = 3
+popup/item_4/text = "Dragon"
+popup/item_4/id = 4
+popup/item_5/text = "Elemental"
+popup/item_5/id = 5
+popup/item_6/text = "Fey"
+popup/item_6/id = 6
+popup/item_7/text = "Fiend"
+popup/item_7/id = 7
+popup/item_8/text = "Giant"
+popup/item_8/id = 8
+popup/item_9/text = "Humanoid"
+popup/item_9/id = 9
+popup/item_10/text = "Monstrosity"
+popup/item_10/id = 10
+popup/item_11/text = "Ooze"
+popup/item_11/id = 11
+popup/item_12/text = "Plant"
+popup/item_12/id = 12
+popup/item_13/text = "Undead"
+popup/item_13/id = 13
+
+[node name="HPDisplay" parent="VBoxContainer" instance=ExtResource("2_4qb2h")]
+layout_mode = 2
+
+[node name="AttrDisplay" parent="VBoxContainer" instance=ExtResource("1_vrw0d")]
+layout_mode = 2

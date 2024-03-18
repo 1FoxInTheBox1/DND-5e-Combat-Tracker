@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1iu4pgst5pu0"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_ieb5e"]
+
+[node name="Player" type="MarginContainer" groups=["Creature"]]
+offset_right = 1151.0
+offset_bottom = 78.0
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_ieb5e")
+
+[node name="PlayerDisplay" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PlayerNameBox" type="HBoxContainer" parent="PlayerDisplay"]
+layout_mode = 2
+
+[node name="NameLabel" type="LineEdit" parent="PlayerDisplay/PlayerNameBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Player Name"
+caret_blink = true
+caret_blink_interval = 0.5
+
+[node name="InitiativeBox" type="VBoxContainer" parent="PlayerDisplay/PlayerNameBox"]
+layout_mode = 2
+
+[node name="InitiativeLabel" type="Label" parent="PlayerDisplay/PlayerNameBox/InitiativeBox"]
+layout_mode = 2
+text = "Initiative:"
+
+[node name="InitiativeAmount" type="SpinBox" parent="PlayerDisplay/PlayerNameBox/InitiativeBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+max_value = 40.0

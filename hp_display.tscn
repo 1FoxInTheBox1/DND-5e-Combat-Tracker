@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://nw1wl3db5vk0"]
+
+[ext_resource type="Script" path="res://hp_display.gd" id="1_ykp7u"]
+
+[node name="HPDisplay" type="HBoxContainer"]
+offset_right = 1144.0
+offset_bottom = 31.0
+size_flags_horizontal = 2
+script = ExtResource("1_ykp7u")
+max_hp = 50
+
+[node name="HPLabel" type="Label" parent="."]
+layout_mode = 2
+text = "HP: 0/0"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Container" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 200
+
+[node name="DamageButton" type="Button" parent="."]
+layout_mode = 2
+text = "Apply Damage"
+
+[node name="DamageAmount" type="SpinBox" parent="."]
+layout_mode = 2
+min_value = -500.0
+max_value = 500.0
+
+[connection signal="pressed" from="DamageButton" to="." method="_on_damage_button_pressed"]
