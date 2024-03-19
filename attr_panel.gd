@@ -1,5 +1,7 @@
 extends VBoxContainer
 
+signal value_changed(new_value : int)
+
 @export var attrName : String
 var attrValue : int
 
@@ -16,3 +18,11 @@ func _process(delta: float) -> void:
 		$StatMod.text = "+" + str(attrMod);
 	else :
 		$StatMod.text = str(attrMod);
+
+
+func _on_stat_num_value_changed(value: float) -> void:
+	value_changed.emit(value)
+	
+func set_value(value : int) -> void:
+	$StatNum.value = value
+	_on_stat_num_value_changed(value)

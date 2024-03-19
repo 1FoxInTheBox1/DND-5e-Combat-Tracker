@@ -13,11 +13,16 @@ text = "STR"
 
 [node name="StatMod" type="Label" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 text = "+0"
 
 [node name="StatNum" type="SpinBox" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 max_value = 40.0
 rounded = true
 custom_arrow_step = 1.0
 select_all_on_focus = true
+
+[connection signal="value_changed" from="StatNum" to="." method="_on_stat_num_value_changed"]
