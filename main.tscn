@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://pcq8tfia2g7o"]
+[gd_scene load_steps=5 format=3 uid="uid://pcq8tfia2g7o"]
 
 [ext_resource type="Script" path="res://initiative_tracker.gd" id="1_4vqf0"]
 [ext_resource type="PackedScene" uid="uid://cknc4fijh1a2a" path="res://attr_panel.tscn" id="2_7oc77"]
 [ext_resource type="PackedScene" uid="uid://c05hef2cshoiu" path="res://creature.tscn" id="2_pjyr7"]
+[ext_resource type="PackedScene" uid="uid://c1iu4pgst5pu0" path="res://player.tscn" id="3_aavjn"]
 
 [node name="Main" type="TabContainer"]
 offset_right = 1150.0
@@ -21,6 +22,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Creature" parent="InitiativeTracker/CreatureList/CreatureVBox" instance=ExtResource("2_pjyr7")]
+layout_mode = 2
+
+[node name="Player" parent="InitiativeTracker/CreatureList/CreatureVBox" instance=ExtResource("3_aavjn")]
+layout_mode = 2
+
+[node name="Creature2" parent="InitiativeTracker/CreatureList/CreatureVBox" instance=ExtResource("2_pjyr7")]
 layout_mode = 2
 
 [node name="RollInitiativeButton" type="Button" parent="InitiativeTracker"]

@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends MarginContainer
 
 #func _ready() -> void:
 	#roll_stat("STR");
@@ -9,5 +9,5 @@ extends HBoxContainer
 	#roll_stat("CHA");
 
 func roll_stat(stat : String) -> int:
-	var attr_panel = get_node(stat);
+	var attr_panel = get_node("HBoxContainer/%s" % stat);
 	return attr_panel.roll();
