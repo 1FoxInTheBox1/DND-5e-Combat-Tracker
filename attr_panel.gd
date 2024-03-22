@@ -38,3 +38,6 @@ func _on_roll_button_pressed() -> void:
 func set_value(value : int) -> void:
 	$StatNum.value = value
 	_on_stat_num_value_changed(value)
+	
+func get_value() -> int:
+	return $StatNum.value

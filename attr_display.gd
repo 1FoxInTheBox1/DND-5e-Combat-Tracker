@@ -14,3 +14,6 @@ func roll_stat(stat : String) -> int:
 	
 func set_stat(stat : String, amount : int) -> void:
 	get_node(stat).set_value(amount)
+	
+func get_stat(stat : String) -> int:
+	return get_node(stat).get_value()

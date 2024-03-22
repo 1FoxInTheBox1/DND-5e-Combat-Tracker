@@ -5,6 +5,7 @@ var creature_name : String
 var creature_size : int
 var creature_type : int
 var max_hp : int
+var hp : int
 var ac : int
 var strong : int
 var dex : int
@@ -22,6 +23,7 @@ func load_creature(loaded_creature : Dictionary) -> void:
 	$CreatureInfoBox/TypeOptions.select(creature_type)
 	
 	max_hp = loaded_creature["max_hp"]
+	hp = loaded_creature["max_hp"]
 	$Health/MaxHP.value = max_hp
 	ac = loaded_creature["ac"]
 	$Health/AC.value = ac
@@ -51,6 +53,7 @@ func _on_type_options_item_selected(index: int) -> void:
 
 func _on_max_hp_value_changed(value: float) -> void:
 	max_hp = value
+	hp = value
 
 func _on_ac_value_changed(value: float) -> void:
 	ac = value

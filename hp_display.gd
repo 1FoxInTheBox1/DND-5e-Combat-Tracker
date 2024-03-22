@@ -22,10 +22,21 @@ func update_values() -> void:
 
 func set_max_hp(amount : int) -> void:
 	max_hp = amount
-	hp = amount
 	update_values()
 	
+func set_current_hp(amount : int) -> void:
+	hp = amount
+	update_values()
 
 func set_ac(amount : int) -> void:
 	ac = amount
 	update_values()
+	
+func get_max_hp() -> int:
+	return $MaxHP.value
+	
+func get_current_hp() -> int:
+	return $CurrentHP.value
+	
+func get_ac() -> int:
+	return $AC.value

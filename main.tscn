@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://pcq8tfia2g7o"]
+[gd_scene load_steps=7 format=3 uid="uid://pcq8tfia2g7o"]
 
 [ext_resource type="Script" path="res://initiative_tracker.gd" id="1_4vqf0"]
 [ext_resource type="Script" path="res://add_player_popup.gd" id="2_4x487"]
 [ext_resource type="PackedScene" uid="uid://cknc4fijh1a2a" path="res://attr_panel.tscn" id="2_7oc77"]
+[ext_resource type="Script" path="res://save_encounter_popup.gd" id="3_stg0e"]
 [ext_resource type="Script" path="res://creature_editor.gd" id="4_ixxbu"]
 [ext_resource type="Script" path="res://creature_options.gd" id="5_m2ujg"]
 
@@ -51,7 +52,16 @@ layout_mode = 2
 size_flags_horizontal = 10
 text = "Load Encounter"
 
-[node name="FileDialog" type="FileDialog" parent="InitiativeTracker"]
+[node name="CreatureFileDialog" type="FileDialog" parent="InitiativeTracker"]
+title = "Open a File"
+initial_position = 1
+size = Vector2i(610, 339)
+ok_button_text = "Open"
+file_mode = 0
+access = 1
+filters = PackedStringArray("*.save")
+
+[node name="EncounterFileDialog" type="FileDialog" parent="InitiativeTracker"]
 title = "Open a File"
 initial_position = 1
 size = Vector2i(610, 339)
@@ -87,6 +97,29 @@ prefix = "Initiative:"
 select_all_on_focus = true
 
 [node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+layout_mode = 2
+text = "Done"
+
+[node name="SaveEncounterPopup" type="Popup" parent="InitiativeTracker"]
+script = ExtResource("3_stg0e")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/SaveEncounterPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Prompt" type="Label" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
+layout_mode = 2
+text = "Enter Encounter Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Input" type="LineEdit" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
+layout_mode = 2
+
+[node name="Done" type="Button" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
@@ -248,9 +281,13 @@ filters = PackedStringArray("*.save")
 [connection signal="pressed" from="InitiativeTracker/Buttons/AddPlayer" to="InitiativeTracker" method="_on_add_player_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/SaveEncounter" to="InitiativeTracker" method="_on_save_encounter_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/LoadEncounter" to="InitiativeTracker" method="_on_load_encounter_pressed"]
-[connection signal="file_selected" from="InitiativeTracker/FileDialog" to="InitiativeTracker" method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="InitiativeTracker/CreatureFileDialog" to="InitiativeTracker" method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="InitiativeTracker/EncounterFileDialog" to="InitiativeTracker" method="_on_encounter_file_dialog_file_selected"]
 [connection signal="window_closed" from="InitiativeTracker/AddPlayerPopup" to="InitiativeTracker" method="_on_add_player_popup_window_closed"]
 [connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/VBoxContainer/Done" to="InitiativeTracker/AddPlayerPopup" method="_on_done_pressed"]
+[connection signal="window_closed" from="InitiativeTracker/SaveEncounterPopup" to="InitiativeTracker" method="_on_save_encounter_popup_window_closed"]
+[connection signal="text_submitted" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Input" to="InitiativeTracker/SaveEncounterPopup" method="_on_input_text_submitted"]
+[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Done" to="InitiativeTracker/SaveEncounterPopup" method="_on_done_pressed"]
 [connection signal="text_changed" from="CreatureEditor/CreatureOptions/CreatureNameBox/NameLabel" to="CreatureEditor/CreatureOptions" method="_on_name_label_text_changed"]
 [connection signal="item_selected" from="CreatureEditor/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/CreatureOptions" method="_on_size_options_item_selected"]
 [connection signal="item_selected" from="CreatureEditor/CreatureOptions/CreatureInfoBox/TypeOptions" to="CreatureEditor/CreatureOptions" method="_on_type_options_item_selected"]

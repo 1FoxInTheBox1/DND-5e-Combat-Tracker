@@ -26,6 +26,7 @@ func load_data(data : Dictionary) -> void:
 	$CreatureDisplay/CreatureInfoBox/TypeOptions.select(data["type"])
 	
 	$CreatureDisplay/HPDisplay.set_max_hp(data["max_hp"])
+	$CreatureDisplay/HPDisplay.set_current_hp(data["hp"])
 	$CreatureDisplay/HPDisplay.set_ac(data["ac"])
 	
 	$CreatureDisplay/AttrDisplay.set_stat("STR", data["str"])
@@ -37,6 +38,24 @@ func load_data(data : Dictionary) -> void:
 	
 	$CreatureDisplay/CreatureNameBox/InitiativeBox/InitiativeAmount.value = data["initiative"]
 
+func save() -> Dictionary:
+	var save_dict = {
+		"save_type" : "creature",
+		"name" : $CreatureDisplay/CreatureNameBox/NameLabel.text,
+		"size" : $CreatureDisplay/CreatureInfoBox/SizeOptions.selected,
+		"type" : $CreatureDisplay/CreatureInfoBox/TypeOptions.selected,
+		"max_hp" : $CreatureDisplay/HPDisplay.get_max_hp(),
+		"hp" : $CreatureDisplay/HPDisplay.get_current_hp(),
+		"ac" : $CreatureDisplay/HPDisplay.get_ac(),
+		"str" : $CreatureDisplay/AttrDisplay.get_stat("STR"),
+		"dex" : $CreatureDisplay/AttrDisplay.get_stat("DEX"),
+		"con" : $CreatureDisplay/AttrDisplay.get_stat("CON"),
+		"int" : $CreatureDisplay/AttrDisplay.get_stat("INT"),
+		"wis" : $CreatureDisplay/AttrDisplay.get_stat("WIS"),
+		"cha" : $CreatureDisplay/AttrDisplay.get_stat("CHA"),
+		"initiative" : $CreatureDisplay/CreatureNameBox/InitiativeBox/InitiativeAmount.value
+	}
+	return save_dict
 
 func _on_delete_pressed() -> void:
-	queue_free();
+	queue_free()

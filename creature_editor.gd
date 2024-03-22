@@ -19,10 +19,12 @@ func save() -> void:
 	var save_game = FileAccess.open("user://creatures/%s.save" % creature_options.creature_name, FileAccess.WRITE)
 		
 	var save_dict = {
+		"save_type" : "creature",
 		"name" : creature_options.creature_name,
 		"size" : creature_options.creature_size,
 		"type" : creature_options.creature_type,
 		"max_hp" : creature_options.max_hp,
+		"hp" : creature_options.hp,
 		"ac" : creature_options.ac,
 		"str" : creature_options.strong,
 		"dex" : creature_options.dex,
