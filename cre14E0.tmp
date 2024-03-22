@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd44rnsiokti4"]
+[gd_scene load_steps=4 format=3 uid="uid://c05hef2cshoiu"]
 
 [ext_resource type="Script" path="res://creature.gd" id="1_kam53"]
 [ext_resource type="PackedScene" uid="uid://dotxkyg533apx" path="res://attr_display.tscn" id="1_vrw0d"]
@@ -17,6 +17,8 @@ layout_mode = 2
 
 [node name="CreatureNameBox" type="HBoxContainer" parent="CreatureDisplay"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
 
 [node name="NameLabel" type="LineEdit" parent="CreatureDisplay/CreatureNameBox"]
 layout_mode = 2
@@ -37,11 +39,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 max_value = 40.0
 
-[node name="HSeparator" type="HSeparator" parent="CreatureDisplay"]
-layout_mode = 2
-
 [node name="CreatureInfoBox" type="HBoxContainer" parent="CreatureDisplay"]
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="SizeOptions" type="OptionButton" parent="CreatureDisplay/CreatureInfoBox"]
 layout_mode = 2
@@ -91,22 +92,19 @@ popup/item_12/id = 12
 popup/item_13/text = "Undead"
 popup/item_13/id = 13
 
-[node name="HSeparator2" type="HSeparator" parent="CreatureDisplay"]
-layout_mode = 2
-
 [node name="HPDisplay" parent="CreatureDisplay" instance=ExtResource("2_4qb2h")]
 layout_mode = 2
 size_flags_horizontal = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
 
 [node name="AttrDisplay" parent="CreatureDisplay" instance=ExtResource("1_vrw0d")]
 layout_mode = 2
-
-[node name="HSeparator3" type="HSeparator" parent="CreatureDisplay"]
-layout_mode = 2
+size_flags_stretch_ratio = 4.0
 
 [node name="DeleteButtonDisplay" type="HBoxContainer" parent="CreatureDisplay"]
 layout_mode = 2
-size_flags_vertical = 8
+size_flags_vertical = 3
 
 [node name="Delete" type="Button" parent="CreatureDisplay/DeleteButtonDisplay"]
 layout_mode = 2

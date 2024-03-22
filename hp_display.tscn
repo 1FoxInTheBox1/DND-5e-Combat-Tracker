@@ -8,24 +8,40 @@ offset_bottom = 31.0
 size_flags_horizontal = 2
 script = ExtResource("1_ykp7u")
 max_hp = 50
+hp = 50
 
-[node name="HPLabel" type="Label" parent="."]
+[node name="Label" type="Label" parent="."]
 layout_mode = 2
-text = "HP: 0/0"
-horizontal_alignment = 1
-uppercase = true
+text = "HP:"
 
-[node name="Container" type="MarginContainer" parent="."]
+[node name="CurrentHP" type="SpinBox" parent="."]
 layout_mode = 2
-size_flags_horizontal = 3
-theme_override_constants/margin_left = 200
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 2
+text = "/"
+
+[node name="MaxHP" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 2
+
+[node name="Label3" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "AC:"
+
+[node name="AC" type="SpinBox" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
 
 [node name="DamageButton" type="Button" parent="."]
 layout_mode = 2
+size_flags_horizontal = 10
 text = "Apply Damage"
 
 [node name="DamageAmount" type="SpinBox" parent="."]
 layout_mode = 2
+size_flags_horizontal = 8
 min_value = -500.0
 max_value = 500.0
 

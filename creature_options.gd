@@ -6,7 +6,7 @@ var creature_size : int
 var creature_type : int
 var max_hp : int
 var ac : int
-var str : int
+var strong : int
 var dex : int
 var con : int
 var smart : int
@@ -26,8 +26,8 @@ func load_creature(loaded_creature : Dictionary) -> void:
 	ac = loaded_creature["ac"]
 	$Health/AC.value = ac
 	
-	str = loaded_creature["str"]
-	$Attributes/STR.set_value(str)
+	strong = loaded_creature["str"]
+	$Attributes/STR.set_value(strong)
 	dex = loaded_creature["dex"]
 	$Attributes/DEX.set_value(dex)
 	con = loaded_creature["con"]
@@ -56,7 +56,7 @@ func _on_ac_value_changed(value: float) -> void:
 	ac = value
 
 func _on_str_value_changed(new_value: int) -> void:
-	str = new_value
+	strong = new_value
 
 func _on_dex_value_changed(new_value: int) -> void:
 	dex = new_value

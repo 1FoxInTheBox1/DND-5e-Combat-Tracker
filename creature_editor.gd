@@ -4,7 +4,7 @@ extends VSplitContainer
 
 var loaded_creature : Dictionary
 
-func save():
+func save() -> void:
 	if (creature_options.creature_name.is_empty()):
 		print("Name was empty. Returning...")
 		return
@@ -15,7 +15,8 @@ func save():
 		print("Type was empty. Returning...")
 		return
 		
-	var save_game = FileAccess.open("user://%s.save" % creature_options.creature_name, FileAccess.WRITE)
+	DirAccess.make_dir_absolute("user://creatures")
+	var save_game = FileAccess.open("user://creatures/%s.save" % creature_options.creature_name, FileAccess.WRITE)
 		
 	var save_dict = {
 		"name" : creature_options.creature_name,
@@ -23,12 +24,13 @@ func save():
 		"type" : creature_options.creature_type,
 		"max_hp" : creature_options.max_hp,
 		"ac" : creature_options.ac,
-		"str" : creature_options.str,
+		"str" : creature_options.strong,
 		"dex" : creature_options.dex,
 		"con" : creature_options.con,
 		"int" : creature_options.smart,
 		"wis" : creature_options.wis,
-		"cha" : creature_options.cha
+		"cha" : creature_options.cha,
+		"initiative" : 0
 	};
 	
 	var json_string = JSON.stringify(save_dict)

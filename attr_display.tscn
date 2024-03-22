@@ -1,38 +1,34 @@
 [gd_scene load_steps=3 format=3 uid="uid://dotxkyg533apx"]
 
 [ext_resource type="Script" path="res://attr_display.gd" id="1_scgcd"]
-[ext_resource type="PackedScene" uid="uid://wj3p8j71xqnh" path="res://attr_roller.tscn" id="2_d1u52"]
+[ext_resource type="PackedScene" uid="uid://cknc4fijh1a2a" path="res://attr_panel.tscn" id="2_1tbri"]
 
-[node name="AttrDisplay" type="MarginContainer"]
-offset_right = 1155.0
-offset_bottom = 150.0
-theme_override_constants/margin_bottom = 70
+[node name="AttrDisplay" type="HBoxContainer"]
+offset_right = 1147.0
+offset_bottom = 579.0
+size_flags_horizontal = 3
 script = ExtResource("1_scgcd")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="STR" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="STR" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "STR"
 
-[node name="DEX" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="DEX" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "DEX"
 
-[node name="CON" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="CON" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "CON"
 
-[node name="INT" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="INT" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "INT"
 
-[node name="WIS" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="WIS" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "WIS"
 
-[node name="CHA" parent="HBoxContainer" instance=ExtResource("2_d1u52")]
+[node name="CHA" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "CHA"
