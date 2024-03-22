@@ -62,12 +62,16 @@ filters = PackedStringArray("*.save")
 
 [node name="AddPlayerPopup" type="Popup" parent="InitiativeTracker"]
 initial_position = 1
-size = Vector2i(145, 100)
+size = Vector2i(190, 128)
+visible = true
 script = ExtResource("2_4x487")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/AddPlayerPopup"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Prompt" type="Label" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
@@ -77,6 +81,10 @@ vertical_alignment = 1
 
 [node name="Input" type="LineEdit" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
+
+[node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+layout_mode = 2
+prefix = "Initiative:"
 
 [node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
@@ -233,7 +241,6 @@ filters = PackedStringArray("*.save")
 [connection signal="pressed" from="InitiativeTracker/Buttons/LoadEncounter" to="InitiativeTracker" method="_on_load_encounter_pressed"]
 [connection signal="file_selected" from="InitiativeTracker/FileDialog" to="InitiativeTracker" method="_on_file_dialog_file_selected"]
 [connection signal="window_closed" from="InitiativeTracker/AddPlayerPopup" to="InitiativeTracker" method="_on_add_player_popup_window_closed"]
-[connection signal="text_submitted" from="InitiativeTracker/AddPlayerPopup/VBoxContainer/Input" to="InitiativeTracker/AddPlayerPopup" method="_on_input_text_submitted"]
 [connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/VBoxContainer/Done" to="InitiativeTracker/AddPlayerPopup" method="_on_done_pressed"]
 [connection signal="text_changed" from="CreatureEditor/CreatureOptions/CreatureNameBox/NameLabel" to="CreatureEditor/CreatureOptions" method="_on_name_label_text_changed"]
 [connection signal="item_selected" from="CreatureEditor/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/CreatureOptions" method="_on_size_options_item_selected"]

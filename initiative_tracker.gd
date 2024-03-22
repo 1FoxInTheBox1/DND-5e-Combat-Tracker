@@ -68,7 +68,8 @@ func _on_load_encounter_pressed() -> void:
 func _on_add_player_pressed() -> void:
 	$AddPlayerPopup.show()
 
-func _on_add_player_popup_window_closed(player_name: String) -> void:
+func _on_add_player_popup_window_closed(player_name: String, initiative : int) -> void:
 	var new_player = player_scene.instantiate()
 	$CreatureList/CreatureVBox.add_child(new_player)
 	new_player.set_player_name(player_name)
+	new_player.set_initiative(initiative)
