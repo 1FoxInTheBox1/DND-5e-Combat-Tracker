@@ -63,7 +63,6 @@ filters = PackedStringArray("*.save")
 [node name="AddPlayerPopup" type="Popup" parent="InitiativeTracker"]
 initial_position = 1
 size = Vector2i(190, 128)
-visible = true
 script = ExtResource("2_4x487")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/AddPlayerPopup"]
@@ -85,6 +84,7 @@ layout_mode = 2
 [node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
 prefix = "Initiative:"
+select_all_on_focus = true
 
 [node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
@@ -173,6 +173,7 @@ size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 max_value = 5000.0
 prefix = "MaxHP"
+select_all_on_focus = true
 
 [node name="MarginContainer" type="MarginContainer" parent="CreatureEditor/CreatureOptions/Health"]
 layout_mode = 2
@@ -183,6 +184,7 @@ layout_mode = 2
 size_flags_horizontal = 10
 max_value = 5000.0
 prefix = "AC"
+select_all_on_focus = true
 
 [node name="Attributes" type="HBoxContainer" parent="CreatureEditor/CreatureOptions"]
 layout_mode = 2
@@ -191,26 +193,33 @@ size_flags_stretch_ratio = 3.0
 
 [node name="STR" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
+attrName = "STR"
+hideButton = true
 
 [node name="DEX" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "DEX"
+hideButton = true
 
 [node name="CON" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "CON"
+hideButton = true
 
 [node name="INT" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "INT"
+hideButton = true
 
 [node name="WIS" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "WIS"
+hideButton = true
 
 [node name="CHA" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "CHA"
+hideButton = true
 
 [node name="Buttons" type="HBoxContainer" parent="CreatureEditor"]
 layout_mode = 2
