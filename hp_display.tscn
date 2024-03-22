@@ -16,6 +16,7 @@ text = "HP:"
 
 [node name="CurrentHP" type="SpinBox" parent="."]
 layout_mode = 2
+select_all_on_focus = true
 
 [node name="Label2" type="Label" parent="."]
 layout_mode = 2
@@ -33,6 +34,7 @@ text = "AC:"
 [node name="AC" type="SpinBox" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
+select_all_on_focus = true
 
 [node name="DamageButton" type="Button" parent="."]
 layout_mode = 2
@@ -44,5 +46,6 @@ layout_mode = 2
 size_flags_horizontal = 8
 min_value = -500.0
 max_value = 500.0
+select_all_on_focus = true
 
 [connection signal="pressed" from="DamageButton" to="." method="_on_damage_button_pressed"]

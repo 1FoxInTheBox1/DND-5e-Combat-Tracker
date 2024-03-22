@@ -1,11 +1,11 @@
 extends VSplitContainer
 
-@onready var creature_options = $CreatureOptions
+@onready var creature_options = $HSplitContainer/CreatureOptions
 
 var loaded_creature : Dictionary
 
 func save() -> void:
-	if (creature_options.creature_name.is_empty()):
+	if (creature_options.creature_name == null):
 		print("Name was empty. Returning...")
 		return
 	if (creature_options.creature_size == -1):
@@ -23,6 +23,7 @@ func save() -> void:
 		"name" : creature_options.creature_name,
 		"size" : creature_options.creature_size,
 		"type" : creature_options.creature_type,
+		"pb" : creature_options.pb,
 		"max_hp" : creature_options.max_hp,
 		"hp" : creature_options.hp,
 		"ac" : creature_options.ac,

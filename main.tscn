@@ -13,8 +13,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+current_tab = 1
 
 [node name="InitiativeTracker" type="VSplitContainer" parent="."]
+visible = false
 layout_mode = 2
 split_offset = 550
 script = ExtResource("1_4vqf0")
@@ -84,12 +86,13 @@ grow_vertical = 2
 
 [node name="Prompt" type="Label" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
-text = "Enter Player Name"
+text = "Enter Player Name and Initiative"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Input" type="LineEdit" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
+placeholder_text = "Name"
 
 [node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
 layout_mode = 2
@@ -118,37 +121,40 @@ vertical_alignment = 1
 
 [node name="Input" type="LineEdit" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
 layout_mode = 2
+placeholder_text = "Name"
 
 [node name="Done" type="Button" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
 [node name="CreatureEditor" type="VSplitContainer" parent="."]
-visible = false
 layout_mode = 2
 split_offset = 500
 script = ExtResource("4_ixxbu")
 
-[node name="CreatureOptions" type="VBoxContainer" parent="CreatureEditor"]
+[node name="HSplitContainer" type="HSplitContainer" parent="CreatureEditor"]
+layout_mode = 2
+
+[node name="CreatureOptions" type="VBoxContainer" parent="CreatureEditor/HSplitContainer"]
 layout_mode = 2
 script = ExtResource("5_m2ujg")
 
-[node name="CreatureNameBox" type="HBoxContainer" parent="CreatureEditor/CreatureOptions"]
+[node name="CreatureNameBox" type="HBoxContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="NameLabel" type="LineEdit" parent="CreatureEditor/CreatureOptions/CreatureNameBox"]
+[node name="NameLabel" type="LineEdit" parent="CreatureEditor/HSplitContainer/CreatureOptions/CreatureNameBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Creature Name"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="CreatureInfoBox" type="HBoxContainer" parent="CreatureEditor/CreatureOptions"]
+[node name="CreatureInfoBox" type="HBoxContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SizeOptions" type="OptionButton" parent="CreatureEditor/CreatureOptions/CreatureInfoBox"]
+[node name="SizeOptions" type="OptionButton" parent="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox"]
 layout_mode = 2
 item_count = 6
 popup/item_0/text = "Tiny"
@@ -164,7 +170,7 @@ popup/item_4/id = 4
 popup/item_5/text = "Gergantuan"
 popup/item_5/id = 5
 
-[node name="TypeOptions" type="OptionButton" parent="CreatureEditor/CreatureOptions/CreatureInfoBox"]
+[node name="TypeOptions" type="OptionButton" parent="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox"]
 layout_mode = 2
 item_count = 14
 popup/item_0/text = "Aberration"
@@ -196,11 +202,17 @@ popup/item_12/id = 12
 popup/item_13/text = "Undead"
 popup/item_13/id = 13
 
-[node name="Health" type="HBoxContainer" parent="CreatureEditor/CreatureOptions"]
+[node name="PB" type="SpinBox" parent="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+prefix = "PB:"
+select_all_on_focus = true
+
+[node name="Health" type="HBoxContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="MaxHP" type="SpinBox" parent="CreatureEditor/CreatureOptions/Health"]
+[node name="MaxHP" type="SpinBox" parent="CreatureEditor/HSplitContainer/CreatureOptions/Health"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
@@ -208,51 +220,54 @@ max_value = 5000.0
 prefix = "MaxHP"
 select_all_on_focus = true
 
-[node name="MarginContainer" type="MarginContainer" parent="CreatureEditor/CreatureOptions/Health"]
+[node name="MarginContainer" type="MarginContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions/Health"]
 layout_mode = 2
 theme_override_constants/margin_right = 100
 
-[node name="AC" type="SpinBox" parent="CreatureEditor/CreatureOptions/Health"]
+[node name="AC" type="SpinBox" parent="CreatureEditor/HSplitContainer/CreatureOptions/Health"]
 layout_mode = 2
 size_flags_horizontal = 10
 max_value = 5000.0
 prefix = "AC"
 select_all_on_focus = true
 
-[node name="Attributes" type="HBoxContainer" parent="CreatureEditor/CreatureOptions"]
+[node name="Attributes" type="HBoxContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 3.0
 
-[node name="STR" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="STR" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "STR"
 hideButton = true
 
-[node name="DEX" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="DEX" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "DEX"
 hideButton = true
 
-[node name="CON" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="CON" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "CON"
 hideButton = true
 
-[node name="INT" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="INT" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "INT"
 hideButton = true
 
-[node name="WIS" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="WIS" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "WIS"
 hideButton = true
 
-[node name="CHA" parent="CreatureEditor/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
+[node name="CHA" parent="CreatureEditor/HSplitContainer/CreatureOptions/Attributes" instance=ExtResource("2_7oc77")]
 layout_mode = 2
 attrName = "CHA"
 hideButton = true
+
+[node name="LineEdit" type="LineEdit" parent="CreatureEditor/HSplitContainer"]
+layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="CreatureEditor"]
 layout_mode = 2
@@ -276,6 +291,29 @@ file_mode = 0
 access = 1
 filters = PackedStringArray("*.save")
 
+[node name="SaveEncounterPopup" type="Popup" parent="CreatureEditor"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CreatureEditor/SaveEncounterPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Prompt" type="Label" parent="CreatureEditor/SaveEncounterPopup/VBoxContainer"]
+layout_mode = 2
+text = "Enter Creature Name:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Input" type="LineEdit" parent="CreatureEditor/SaveEncounterPopup/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Name"
+
+[node name="Done" type="Button" parent="CreatureEditor/SaveEncounterPopup/VBoxContainer"]
+layout_mode = 2
+text = "Done"
+
 [connection signal="pressed" from="InitiativeTracker/Buttons/RollInitiative" to="InitiativeTracker" method="_on_roll_initiative_button_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/LoadCreature" to="InitiativeTracker" method="_on_load_creature_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/AddPlayer" to="InitiativeTracker" method="_on_add_player_pressed"]
@@ -288,17 +326,20 @@ filters = PackedStringArray("*.save")
 [connection signal="window_closed" from="InitiativeTracker/SaveEncounterPopup" to="InitiativeTracker" method="_on_save_encounter_popup_window_closed"]
 [connection signal="text_submitted" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Input" to="InitiativeTracker/SaveEncounterPopup" method="_on_input_text_submitted"]
 [connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Done" to="InitiativeTracker/SaveEncounterPopup" method="_on_done_pressed"]
-[connection signal="text_changed" from="CreatureEditor/CreatureOptions/CreatureNameBox/NameLabel" to="CreatureEditor/CreatureOptions" method="_on_name_label_text_changed"]
-[connection signal="item_selected" from="CreatureEditor/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/CreatureOptions" method="_on_size_options_item_selected"]
-[connection signal="item_selected" from="CreatureEditor/CreatureOptions/CreatureInfoBox/TypeOptions" to="CreatureEditor/CreatureOptions" method="_on_type_options_item_selected"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Health/MaxHP" to="CreatureEditor/CreatureOptions" method="_on_max_hp_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Health/AC" to="CreatureEditor/CreatureOptions" method="_on_ac_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/STR" to="CreatureEditor/CreatureOptions" method="_on_str_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/DEX" to="CreatureEditor/CreatureOptions" method="_on_dex_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/CON" to="CreatureEditor/CreatureOptions" method="_on_con_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/INT" to="CreatureEditor/CreatureOptions" method="_on_int_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/WIS" to="CreatureEditor/CreatureOptions" method="_on_wis_value_changed"]
-[connection signal="value_changed" from="CreatureEditor/CreatureOptions/Attributes/CHA" to="CreatureEditor/CreatureOptions" method="_on_cha_value_changed"]
+[connection signal="text_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureNameBox/NameLabel" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_name_label_text_changed"]
+[connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_size_options_item_selected"]
+[connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/TypeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_type_options_item_selected"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/PB" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_pb_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Health/MaxHP" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_max_hp_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Health/AC" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_ac_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/STR" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_str_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/DEX" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_dex_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/CON" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_con_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/INT" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_int_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/WIS" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_wis_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/CHA" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_cha_value_changed"]
 [connection signal="pressed" from="CreatureEditor/Buttons/Save" to="CreatureEditor" method="_on_save_pressed"]
 [connection signal="pressed" from="CreatureEditor/Buttons/Load" to="CreatureEditor" method="_on_load_pressed"]
 [connection signal="file_selected" from="CreatureEditor/FileDialog" to="CreatureEditor" method="_on_file_dialog_file_selected"]
+[connection signal="text_submitted" from="CreatureEditor/SaveEncounterPopup/VBoxContainer/Input" to="CreatureEditor/SaveEncounterPopup" method="_on_input_text_submitted"]
+[connection signal="pressed" from="CreatureEditor/SaveEncounterPopup/VBoxContainer/Done" to="CreatureEditor/SaveEncounterPopup" method="_on_done_pressed"]

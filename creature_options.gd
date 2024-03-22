@@ -4,6 +4,7 @@ extends VBoxContainer
 var creature_name : String
 var creature_size : int
 var creature_type : int
+var pb : int
 var max_hp : int
 var hp : int
 var ac : int
@@ -21,6 +22,8 @@ func load_creature(loaded_creature : Dictionary) -> void:
 	$CreatureInfoBox/SizeOptions.select(creature_size)
 	creature_type = loaded_creature["type"]
 	$CreatureInfoBox/TypeOptions.select(creature_type)
+	pb = loaded_creature["pb"]
+	$CreatureInfoBox/PB.value = pb;
 	
 	max_hp = loaded_creature["max_hp"]
 	hp = loaded_creature["max_hp"]
@@ -75,3 +78,6 @@ func _on_wis_value_changed(new_value: int) -> void:
 
 func _on_cha_value_changed(new_value: int) -> void:
 	cha = new_value
+
+func _on_pb_value_changed(value: float) -> void:
+	pb = value
