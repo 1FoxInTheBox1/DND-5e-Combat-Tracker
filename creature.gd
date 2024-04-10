@@ -25,6 +25,7 @@ func load_data(data : Dictionary) -> void:
 	$CreatureDisplay/CreatureInfoBox/SizeOptions.select(data["size"])
 	$CreatureDisplay/CreatureInfoBox/TypeOptions.select(data["type"])
 	$CreatureDisplay/CreatureInfoBox/PB.value = data["pb"]
+	$CreatureDisplay/CreatureInfoBox/SPD.value = data["spd"]
 	
 	$CreatureDisplay/HPDisplay.set_max_hp(data["max_hp"])
 	$CreatureDisplay/HPDisplay.set_current_hp(data["hp"])
@@ -39,6 +40,7 @@ func load_data(data : Dictionary) -> void:
 	
 	$CreatureDisplay/CreatureNameBox/InitiativeBox/InitiativeAmount.value = data["initiative"]
 
+
 func save() -> Dictionary:
 	var save_dict = {
 		"save_type" : "creature",
@@ -46,6 +48,7 @@ func save() -> Dictionary:
 		"size" : $CreatureDisplay/CreatureInfoBox/SizeOptions.selected,
 		"type" : $CreatureDisplay/CreatureInfoBox/TypeOptions.selected,
 		"pb" : $CreatureDisplay/CreatureInfoBox/PB.value,
+		"spd" : $CreatureDisplay/CreatureInfoBox/SPD.value,
 		"max_hp" : $CreatureDisplay/HPDisplay.get_max_hp(),
 		"hp" : $CreatureDisplay/HPDisplay.get_current_hp(),
 		"ac" : $CreatureDisplay/HPDisplay.get_ac(),

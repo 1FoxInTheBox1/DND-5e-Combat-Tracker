@@ -5,6 +5,7 @@ var creature_name : String
 var creature_size : int
 var creature_type : int
 var pb : int
+var spd : int
 var max_hp : int
 var hp : int
 var ac : int
@@ -24,6 +25,8 @@ func load_creature(loaded_creature : Dictionary) -> void:
 	$CreatureInfoBox/TypeOptions.select(creature_type)
 	pb = loaded_creature["pb"]
 	$CreatureInfoBox/PB.value = pb;
+	spd = loaded_creature["spd"]
+	$CreatureInfoBox/SPD.value = spd;
 	
 	max_hp = loaded_creature["max_hp"]
 	hp = loaded_creature["max_hp"]
@@ -81,3 +84,6 @@ func _on_cha_value_changed(new_value: int) -> void:
 
 func _on_pb_value_changed(value: float) -> void:
 	pb = value
+	
+func _on_spd_value_changed(value: float) -> void:
+	spd = value

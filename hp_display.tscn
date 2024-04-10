@@ -16,6 +16,7 @@ text = "HP:"
 
 [node name="CurrentHP" type="SpinBox" parent="."]
 layout_mode = 2
+max_value = 999999.0
 select_all_on_focus = true
 
 [node name="Label2" type="Label" parent="."]
@@ -25,6 +26,7 @@ text = "/"
 [node name="MaxHP" type="SpinBox" parent="."]
 layout_mode = 2
 size_flags_horizontal = 2
+max_value = 999999.0
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2

@@ -13,10 +13,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
 
 [node name="InitiativeTracker" type="VSplitContainer" parent="."]
-visible = false
 layout_mode = 2
 split_offset = 550
 script = ExtResource("1_4vqf0")
@@ -128,6 +126,7 @@ layout_mode = 2
 text = "Done"
 
 [node name="CreatureEditor" type="VSplitContainer" parent="."]
+visible = false
 layout_mode = 2
 split_offset = 500
 script = ExtResource("4_ixxbu")
@@ -208,6 +207,12 @@ size_flags_horizontal = 10
 prefix = "PB:"
 select_all_on_focus = true
 
+[node name="SPD" type="SpinBox" parent="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox"]
+layout_mode = 2
+prefix = "SPD:"
+suffix = "ft"
+select_all_on_focus = true
+
 [node name="Health" type="HBoxContainer" parent="CreatureEditor/HSplitContainer/CreatureOptions"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -266,7 +271,10 @@ layout_mode = 2
 attrName = "CHA"
 hideButton = true
 
-[node name="LineEdit" type="LineEdit" parent="CreatureEditor/HSplitContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CreatureEditor/HSplitContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="CreatureEditor/HSplitContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="Buttons" type="HBoxContainer" parent="CreatureEditor"]
@@ -330,6 +338,7 @@ text = "Done"
 [connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_size_options_item_selected"]
 [connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/TypeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_type_options_item_selected"]
 [connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/PB" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_pb_value_changed"]
+[connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/SPD" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_spd_value_changed"]
 [connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Health/MaxHP" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_max_hp_value_changed"]
 [connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Health/AC" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_ac_value_changed"]
 [connection signal="value_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/Attributes/STR" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_str_value_changed"]

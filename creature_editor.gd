@@ -24,6 +24,7 @@ func save() -> void:
 		"size" : creature_options.creature_size,
 		"type" : creature_options.creature_type,
 		"pb" : creature_options.pb,
+		"spd" : creature_options.spd,
 		"max_hp" : creature_options.max_hp,
 		"hp" : creature_options.hp,
 		"ac" : creature_options.ac,

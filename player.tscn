@@ -11,6 +11,11 @@ script = ExtResource("1_ieb5e")
 
 [node name="PlayerDisplay" type="VBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HSeparator" type="HSeparator" parent="PlayerDisplay"]
+layout_mode = 2
+size_flags_vertical = 0
 
 [node name="PlayerNameBox" type="HBoxContainer" parent="PlayerDisplay"]
 layout_mode = 2

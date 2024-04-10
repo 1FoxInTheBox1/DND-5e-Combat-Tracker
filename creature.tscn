@@ -97,6 +97,14 @@ size_flags_horizontal = 10
 prefix = "PB:"
 select_all_on_focus = true
 
+[node name="SPD" type="SpinBox" parent="CreatureDisplay/CreatureInfoBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.15
+prefix = "SPD:"
+suffix = "ft"
+select_all_on_focus = true
+
 [node name="HPDisplay" parent="CreatureDisplay" instance=ExtResource("2_4qb2h")]
 layout_mode = 2
 size_flags_horizontal = 1
