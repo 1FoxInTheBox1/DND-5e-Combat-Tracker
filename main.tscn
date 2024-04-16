@@ -4,56 +4,52 @@
 [ext_resource type="Script" path="res://add_player_popup.gd" id="2_4x487"]
 [ext_resource type="Script" path="res://save_encounter_popup.gd" id="3_stg0e"]
 
-[node name="Main" type="TabContainer"]
+[node name="InitiativeTracker" type="VSplitContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="InitiativeTracker" type="VSplitContainer" parent="."]
-layout_mode = 2
+offset_top = 31.0
 split_offset = 550
 script = ExtResource("1_4vqf0")
 
-[node name="CreatureList" type="ScrollContainer" parent="InitiativeTracker"]
+[node name="CreatureList" type="ScrollContainer" parent="."]
 layout_mode = 2
 
-[node name="CreatureVBox" type="VBoxContainer" parent="InitiativeTracker/CreatureList"]
+[node name="CreatureVBox" type="VBoxContainer" parent="CreatureList"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Buttons" type="HBoxContainer" parent="InitiativeTracker"]
+[node name="Buttons" type="HBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="RollInitiative" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="RollInitiative" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Roll Initiative"
 
-[node name="AddBlankCreature" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="AddBlankCreature" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Add Blank Creature"
 
-[node name="LoadCreature" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="LoadCreature" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Load Creature"
 
-[node name="AddPlayer" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="AddPlayer" type="Button" parent="Buttons"]
 layout_mode = 2
 text = "Add Player"
 
-[node name="SaveEncounter" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="SaveEncounter" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 119.55
 text = "Save Encounter"
 
-[node name="LoadEncounter" type="Button" parent="InitiativeTracker/Buttons"]
+[node name="LoadEncounter" type="Button" parent="Buttons"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Load Encounter"
 
-[node name="CreatureFileDialog" type="FileDialog" parent="InitiativeTracker"]
+[node name="CreatureFileDialog" type="FileDialog" parent="."]
 title = "Open a File"
 initial_position = 1
 size = Vector2i(610, 339)
@@ -62,7 +58,7 @@ file_mode = 0
 access = 1
 filters = PackedStringArray("*.save")
 
-[node name="EncounterFileDialog" type="FileDialog" parent="InitiativeTracker"]
+[node name="EncounterFileDialog" type="FileDialog" parent="."]
 title = "Open a File"
 initial_position = 1
 size = Vector2i(610, 339)
@@ -71,12 +67,12 @@ file_mode = 0
 access = 1
 filters = PackedStringArray("*.save")
 
-[node name="AddPlayerPopup" type="Popup" parent="InitiativeTracker"]
+[node name="AddPlayerPopup" type="Popup" parent="."]
 initial_position = 1
 size = Vector2i(271, 183)
 script = ExtResource("2_4x487")
 
-[node name="MarginContainer" type="MarginContainer" parent="InitiativeTracker/AddPlayerPopup"]
+[node name="MarginContainer" type="MarginContainer" parent="AddPlayerPopup"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
@@ -84,38 +80,38 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/AddPlayerPopup/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="AddPlayerPopup/MarginContainer"]
 layout_mode = 2
 
-[node name="Prompt" type="Label" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+[node name="Prompt" type="Label" parent="AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Enter Player Name and Initiative"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Input" type="LineEdit" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Name"
 
-[node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+[node name="Initiative" type="SpinBox" parent="AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 prefix = "Initiative:"
 select_all_on_focus = true
 
-[node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+[node name="Done" type="Button" parent="AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
-[node name="Cancel" type="Button" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+[node name="Cancel" type="Button" parent="AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cancel"
 
-[node name="SaveEncounterPopup" type="Popup" parent="InitiativeTracker"]
+[node name="SaveEncounterPopup" type="Popup" parent="."]
 initial_position = 1
 size = Vector2i(201, 148)
 script = ExtResource("3_stg0e")
 
-[node name="MarginContainer" type="MarginContainer" parent="InitiativeTracker/SaveEncounterPopup"]
+[node name="MarginContainer" type="MarginContainer" parent="SaveEncounterPopup"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/margin_left = 10
@@ -123,39 +119,39 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SaveEncounterPopup/MarginContainer"]
 layout_mode = 2
 
-[node name="Prompt" type="Label" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
+[node name="Prompt" type="Label" parent="SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Enter Encounter Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Input" type="LineEdit" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Name"
 
-[node name="Done" type="Button" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
+[node name="Done" type="Button" parent="SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
-[node name="Cancel" type="Button" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
+[node name="Cancel" type="Button" parent="SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Cancel"
 
-[connection signal="pressed" from="InitiativeTracker/Buttons/RollInitiative" to="InitiativeTracker" method="_on_roll_initiative_button_pressed"]
-[connection signal="pressed" from="InitiativeTracker/Buttons/AddBlankCreature" to="InitiativeTracker" method="_on_add_blank_creature_pressed"]
-[connection signal="pressed" from="InitiativeTracker/Buttons/LoadCreature" to="InitiativeTracker" method="_on_load_creature_pressed"]
-[connection signal="pressed" from="InitiativeTracker/Buttons/AddPlayer" to="InitiativeTracker" method="_on_add_player_pressed"]
-[connection signal="pressed" from="InitiativeTracker/Buttons/SaveEncounter" to="InitiativeTracker" method="_on_save_encounter_pressed"]
-[connection signal="pressed" from="InitiativeTracker/Buttons/LoadEncounter" to="InitiativeTracker" method="_on_load_encounter_pressed"]
-[connection signal="file_selected" from="InitiativeTracker/CreatureFileDialog" to="InitiativeTracker" method="_on_file_dialog_file_selected"]
-[connection signal="file_selected" from="InitiativeTracker/EncounterFileDialog" to="InitiativeTracker" method="_on_encounter_file_dialog_file_selected"]
-[connection signal="window_closed" from="InitiativeTracker/AddPlayerPopup" to="InitiativeTracker" method="_on_add_player_popup_window_closed"]
-[connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer/Done" to="InitiativeTracker/AddPlayerPopup" method="_on_done_pressed"]
-[connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer/Cancel" to="InitiativeTracker/AddPlayerPopup" method="_on_cancel_pressed"]
-[connection signal="window_closed" from="InitiativeTracker/SaveEncounterPopup" to="InitiativeTracker" method="_on_save_encounter_popup_window_closed"]
-[connection signal="text_submitted" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Input" to="InitiativeTracker/SaveEncounterPopup" method="_on_input_text_submitted"]
-[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Done" to="InitiativeTracker/SaveEncounterPopup" method="_on_done_pressed"]
-[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Cancel" to="InitiativeTracker/SaveEncounterPopup" method="_on_cancel_pressed"]
+[connection signal="pressed" from="Buttons/RollInitiative" to="." method="_on_roll_initiative_button_pressed"]
+[connection signal="pressed" from="Buttons/AddBlankCreature" to="." method="_on_add_blank_creature_pressed"]
+[connection signal="pressed" from="Buttons/LoadCreature" to="." method="_on_load_creature_pressed"]
+[connection signal="pressed" from="Buttons/AddPlayer" to="." method="_on_add_player_pressed"]
+[connection signal="pressed" from="Buttons/SaveEncounter" to="." method="_on_save_encounter_pressed"]
+[connection signal="pressed" from="Buttons/LoadEncounter" to="." method="_on_load_encounter_pressed"]
+[connection signal="file_selected" from="CreatureFileDialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="file_selected" from="EncounterFileDialog" to="." method="_on_encounter_file_dialog_file_selected"]
+[connection signal="window_closed" from="AddPlayerPopup" to="." method="_on_add_player_popup_window_closed"]
+[connection signal="pressed" from="AddPlayerPopup/MarginContainer/VBoxContainer/Done" to="AddPlayerPopup" method="_on_done_pressed"]
+[connection signal="pressed" from="AddPlayerPopup/MarginContainer/VBoxContainer/Cancel" to="AddPlayerPopup" method="_on_cancel_pressed"]
+[connection signal="window_closed" from="SaveEncounterPopup" to="." method="_on_save_encounter_popup_window_closed"]
+[connection signal="text_submitted" from="SaveEncounterPopup/MarginContainer/VBoxContainer/Input" to="SaveEncounterPopup" method="_on_input_text_submitted"]
+[connection signal="pressed" from="SaveEncounterPopup/MarginContainer/VBoxContainer/Done" to="SaveEncounterPopup" method="_on_done_pressed"]
+[connection signal="pressed" from="SaveEncounterPopup/MarginContainer/VBoxContainer/Cancel" to="SaveEncounterPopup" method="_on_cancel_pressed"]
