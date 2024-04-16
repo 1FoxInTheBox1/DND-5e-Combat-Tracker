@@ -1,6 +1,7 @@
 extends VBoxContainer
 
 signal value_changed(new_value : int)
+signal roll_result(value : int, crit : bool, fail : bool)
 
 var rng = RandomNumberGenerator.new()
 @export var attrName : String
@@ -18,7 +19,7 @@ func _process(delta: float) -> void:
 	var attrMod : int = floor(($StatNum.value - 10) / 2)
 	if (attrMod >= 0):
 		$StatMod.text = "+" + str(attrMod)
-	else :
+	else:
 		$StatMod.text = str(attrMod)
 
 func _on_stat_num_value_changed(value: float) -> void:
@@ -29,6 +30,12 @@ func roll() -> int:
 	var mod : int = floor(($StatNum.value - 10) / 2)
 	if (roll == 20):
 		print("NATURAL 20!")
+		roll_result.emit(roll + mod, true, false);
+	elif (roll == 1):
+		print("CRIT FAIL!")
+		roll_result.emit(roll + mod, false, true);
+	else:
+		roll_result.emit(roll + mod, false, false);
 	print(str("Rolled stat %s and got result %d" % [attrName, roll + mod]))
 	return roll + mod
  

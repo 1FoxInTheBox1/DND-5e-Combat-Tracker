@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dotxkyg533apx"]
+[gd_scene load_steps=4 format=3 uid="uid://dotxkyg533apx"]
 
 [ext_resource type="Script" path="res://attr_display.gd" id="1_scgcd"]
 [ext_resource type="PackedScene" uid="uid://cknc4fijh1a2a" path="res://attr_panel.tscn" id="2_1tbri"]
+[ext_resource type="Script" path="res://roll_result.gd" id="3_0kvlt"]
 
 [node name="AttrDisplay" type="HBoxContainer"]
 offset_right = 1147.0
@@ -32,3 +33,27 @@ attrName = "WIS"
 [node name="CHA" parent="." instance=ExtResource("2_1tbri")]
 layout_mode = 2
 attrName = "CHA"
+
+[node name="RollResult" type="Popup" parent="."]
+initial_position = 1
+script = ExtResource("3_0kvlt")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="RollResult"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="RollResult/VBoxContainer"]
+layout_mode = 2
+text = "Roll Result:"
+
+[node name="Button" type="Button" parent="RollResult/VBoxContainer"]
+layout_mode = 2
+text = "Cool!"
+
+[connection signal="roll_result" from="STR" to="." method="_on_str_roll_result"]
+[connection signal="roll_result" from="DEX" to="." method="_on_dex_roll_result"]
+[connection signal="roll_result" from="CON" to="." method="_on_con_roll_result"]
+[connection signal="roll_result" from="INT" to="." method="_on_int_roll_result"]
+[connection signal="roll_result" from="WIS" to="." method="_on_wis_roll_result"]
+[connection signal="roll_result" from="CHA" to="." method="_on_cha_roll_result"]
+[connection signal="pressed" from="RollResult/VBoxContainer/Button" to="RollResult" method="_on_button_pressed"]
