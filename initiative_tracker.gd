@@ -26,15 +26,13 @@ func _on_roll_initiative_button_pressed() -> void:
 	call_deferred("sort_initiative_list")
 
 		
-func dupe_creature() -> void:
-	print("TODO: Dupe creature");
+func dupe_creature(data : Dictionary) -> void:
+	add_creature(data)
 	
 func add_blank_creature() -> MarginContainer:
 	var new_creature = creature_scene.instantiate()
 	$CreatureList/CreatureVBox.add_child(new_creature)
-	var dupeButton : Button = new_creature.get_node("CreatureDisplay/OptionButtonDisplay/Duplicate")
-	print(dupeButton)
-	dupeButton.pressed.connect(dupe_creature)
+	new_creature.dupe_requested.connect(dupe_creature)
 	return new_creature
 	
 func add_creature(data : Dictionary) -> void:

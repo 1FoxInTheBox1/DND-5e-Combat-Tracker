@@ -1,5 +1,6 @@
 extends Control
 
+signal dupe_requested(data : Dictionary)
 
 @export var creatureName : String
 
@@ -86,3 +87,7 @@ func _on_delete_pressed() -> void:
 
 func _on_save_pressed() -> void:
 	save()
+
+
+func _on_duplicate_pressed() -> void:
+	dupe_requested.emit(get_save_dict())
