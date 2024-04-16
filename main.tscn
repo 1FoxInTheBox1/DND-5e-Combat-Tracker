@@ -33,6 +33,10 @@ layout_mode = 2
 layout_mode = 2
 text = "Roll Initiative"
 
+[node name="AddBlankCreature" type="Button" parent="InitiativeTracker/Buttons"]
+layout_mode = 2
+text = "Add Blank Creature"
+
 [node name="LoadCreature" type="Button" parent="InitiativeTracker/Buttons"]
 layout_mode = 2
 text = "Load Creature"
@@ -341,6 +345,7 @@ layout_mode = 2
 text = "Done"
 
 [connection signal="pressed" from="InitiativeTracker/Buttons/RollInitiative" to="InitiativeTracker" method="_on_roll_initiative_button_pressed"]
+[connection signal="pressed" from="InitiativeTracker/Buttons/AddBlankCreature" to="InitiativeTracker" method="_on_add_blank_creature_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/LoadCreature" to="InitiativeTracker" method="_on_load_creature_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/AddPlayer" to="InitiativeTracker" method="_on_add_player_pressed"]
 [connection signal="pressed" from="InitiativeTracker/Buttons/SaveEncounter" to="InitiativeTracker" method="_on_save_encounter_pressed"]

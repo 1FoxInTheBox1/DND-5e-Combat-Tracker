@@ -40,8 +40,26 @@ func load_data(data : Dictionary) -> void:
 	
 	$CreatureDisplay/CreatureNameBox/InitiativeBox/InitiativeAmount.value = data["initiative"]
 
+func save() -> void:
+	if ($CreatureDisplay/CreatureNameBox/NameLabel.text == null):
+		print("Name was empty. Returning...")
+		return
+	if ($CreatureDisplay/CreatureInfoBox/SizeOptions.selected == -1):
+		print("Size was empty. Returning...")
+		return
+	if ($CreatureDisplay/CreatureInfoBox/TypeOptions.selected == -1):
+		print("Type was empty. Returning...")
+		return
+		
+	DirAccess.make_dir_absolute("user://creatures")
+	var save_game = FileAccess.open("user://creatures/%s.save" % $CreatureDisplay/CreatureNameBox/NameLabel.text, FileAccess.WRITE)
+		
+	var save_dict = get_save_dict()
+	
+	var json_string = JSON.stringify(save_dict)
+	save_game.store_line(json_string)
 
-func save() -> Dictionary:
+func get_save_dict() -> Dictionary:
 	var save_dict = {
 		"save_type" : "creature",
 		"name" : $CreatureDisplay/CreatureNameBox/NameLabel.text,
@@ -64,3 +82,7 @@ func save() -> Dictionary:
 
 func _on_delete_pressed() -> void:
 	queue_free()
+
+
+func _on_save_pressed() -> void:
+	save()

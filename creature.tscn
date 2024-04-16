@@ -112,21 +112,22 @@ size_flags_horizontal = 1
 [node name="AttrDisplay" parent="CreatureDisplay" instance=ExtResource("1_vrw0d")]
 layout_mode = 2
 
-[node name="DeleteButtonDisplay" type="HBoxContainer" parent="CreatureDisplay"]
+[node name="OptionButtonDisplay" type="HBoxContainer" parent="CreatureDisplay"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Delete" type="Button" parent="CreatureDisplay/DeleteButtonDisplay"]
+[node name="Delete" type="Button" parent="CreatureDisplay/OptionButtonDisplay"]
 layout_mode = 2
 size_flags_horizontal = 10
 text = "Delete"
 
-[node name="Duplicate" type="Button" parent="CreatureDisplay/DeleteButtonDisplay"]
+[node name="Duplicate" type="Button" parent="CreatureDisplay/OptionButtonDisplay"]
 layout_mode = 2
 text = "Duplicate"
 
-[node name="Save" type="Button" parent="CreatureDisplay/DeleteButtonDisplay"]
+[node name="Save" type="Button" parent="CreatureDisplay/OptionButtonDisplay"]
 layout_mode = 2
 text = "Save"
 
-[connection signal="pressed" from="CreatureDisplay/DeleteButtonDisplay/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="CreatureDisplay/OptionButtonDisplay/Delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="CreatureDisplay/OptionButtonDisplay/Save" to="." method="_on_save_pressed"]

@@ -29,14 +29,17 @@ func _on_roll_initiative_button_pressed() -> void:
 func dupe_creature() -> void:
 	print("TODO: Dupe creature");
 	
-	
-func add_creature(data : Dictionary) -> void:
+func add_blank_creature() -> MarginContainer:
 	var new_creature = creature_scene.instantiate()
 	$CreatureList/CreatureVBox.add_child(new_creature)
-	new_creature.load_data(data)
-	var dupeButton : Button = new_creature.get_node("CreatureDisplay/DeleteButtonDisplay/Duplicate")
+	var dupeButton : Button = new_creature.get_node("CreatureDisplay/OptionButtonDisplay/Duplicate")
+	print(dupeButton)
 	dupeButton.pressed.connect(dupe_creature)
+	return new_creature
 	
+func add_creature(data : Dictionary) -> void:
+	var new_creature = add_blank_creature()
+	new_creature.load_data(data)
 
 func add_player(data : Dictionary) -> void:
 	var new_player = player_scene.instantiate()
@@ -125,3 +128,7 @@ func _on_encounter_file_dialog_file_selected(path: String) -> void:
 			add_creature(loaded_data)
 		elif (loaded_data["save_type"] == "player"):
 			add_player(loaded_data)
+
+
+func _on_add_blank_creature_pressed() -> void:
+	add_blank_creature()
