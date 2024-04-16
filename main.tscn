@@ -72,58 +72,76 @@ filters = PackedStringArray("*.save")
 
 [node name="AddPlayerPopup" type="Popup" parent="InitiativeTracker"]
 initial_position = 1
-size = Vector2i(190, 128)
+size = Vector2i(271, 183)
 script = ExtResource("2_4x487")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/AddPlayerPopup"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="InitiativeTracker/AddPlayerPopup"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Prompt" type="Label" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/AddPlayerPopup/MarginContainer"]
+layout_mode = 2
+
+[node name="Prompt" type="Label" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Enter Player Name and Initiative"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Input" type="LineEdit" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Name"
 
-[node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+[node name="Initiative" type="SpinBox" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 prefix = "Initiative:"
 select_all_on_focus = true
 
-[node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/VBoxContainer"]
+[node name="Done" type="Button" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
+[node name="Cancel" type="Button" parent="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
 [node name="SaveEncounterPopup" type="Popup" parent="InitiativeTracker"]
+initial_position = 1
+size = Vector2i(201, 148)
 script = ExtResource("3_stg0e")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/SaveEncounterPopup"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer" type="MarginContainer" parent="InitiativeTracker/SaveEncounterPopup"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="Prompt" type="Label" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer"]
+layout_mode = 2
+
+[node name="Prompt" type="Label" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Enter Encounter Name:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Input" type="LineEdit" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
+[node name="Input" type="LineEdit" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 placeholder_text = "Name"
 
-[node name="Done" type="Button" parent="InitiativeTracker/SaveEncounterPopup/VBoxContainer"]
+[node name="Done" type="Button" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Done"
+
+[node name="Cancel" type="Button" parent="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Cancel"
 
 [node name="CreatureEditor" type="VSplitContainer" parent="."]
 visible = false
@@ -330,10 +348,12 @@ text = "Done"
 [connection signal="file_selected" from="InitiativeTracker/CreatureFileDialog" to="InitiativeTracker" method="_on_file_dialog_file_selected"]
 [connection signal="file_selected" from="InitiativeTracker/EncounterFileDialog" to="InitiativeTracker" method="_on_encounter_file_dialog_file_selected"]
 [connection signal="window_closed" from="InitiativeTracker/AddPlayerPopup" to="InitiativeTracker" method="_on_add_player_popup_window_closed"]
-[connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/VBoxContainer/Done" to="InitiativeTracker/AddPlayerPopup" method="_on_done_pressed"]
+[connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer/Done" to="InitiativeTracker/AddPlayerPopup" method="_on_done_pressed"]
+[connection signal="pressed" from="InitiativeTracker/AddPlayerPopup/MarginContainer/VBoxContainer/Cancel" to="InitiativeTracker/AddPlayerPopup" method="_on_cancel_pressed"]
 [connection signal="window_closed" from="InitiativeTracker/SaveEncounterPopup" to="InitiativeTracker" method="_on_save_encounter_popup_window_closed"]
-[connection signal="text_submitted" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Input" to="InitiativeTracker/SaveEncounterPopup" method="_on_input_text_submitted"]
-[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/VBoxContainer/Done" to="InitiativeTracker/SaveEncounterPopup" method="_on_done_pressed"]
+[connection signal="text_submitted" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Input" to="InitiativeTracker/SaveEncounterPopup" method="_on_input_text_submitted"]
+[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Done" to="InitiativeTracker/SaveEncounterPopup" method="_on_done_pressed"]
+[connection signal="pressed" from="InitiativeTracker/SaveEncounterPopup/MarginContainer/VBoxContainer/Cancel" to="InitiativeTracker/SaveEncounterPopup" method="_on_cancel_pressed"]
 [connection signal="text_changed" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureNameBox/NameLabel" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_name_label_text_changed"]
 [connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/SizeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_size_options_item_selected"]
 [connection signal="item_selected" from="CreatureEditor/HSplitContainer/CreatureOptions/CreatureInfoBox/TypeOptions" to="CreatureEditor/HSplitContainer/CreatureOptions" method="_on_type_options_item_selected"]
