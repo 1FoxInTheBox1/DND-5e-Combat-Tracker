@@ -32,18 +32,23 @@ func dupe_creature(data : Dictionary) -> void:
 func add_blank_creature() -> MarginContainer:
 	var new_creature = creature_scene.instantiate()
 	$CreatureList/CreatureVBox.add_child(new_creature)
+	new_creature.initiative_updated.connect(sort_initiative_list);
 	new_creature.dupe_requested.connect(dupe_creature)
+	sort_initiative_list()
 	return new_creature
 	
 func add_creature(data : Dictionary) -> void:
 	var new_creature = add_blank_creature()
 	new_creature.load_data(data)
+	sort_initiative_list()
 
 func add_player(data : Dictionary) -> void:
 	var new_player = player_scene.instantiate()
 	$CreatureList/CreatureVBox.add_child(new_player)
+	new_player.initiative_updated.connect(sort_initiative_list);
 	new_player.set_player_name(data["name"])
 	new_player.set_initiative(data["initiative"])
+	sort_initiative_list()
 
 
 func _on_load_creature_pressed() -> void:

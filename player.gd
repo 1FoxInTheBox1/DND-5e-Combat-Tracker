@@ -1,5 +1,7 @@
 extends MarginContainer
 
+signal initiative_updated
+
 func get_initiative() -> int:
 	return $PlayerDisplay/PlayerNameBox/InitiativeBox/InitiativeAmount.value
 	
@@ -16,3 +18,7 @@ func save() -> Dictionary:
 		"initiative" : $PlayerDisplay/PlayerNameBox/InitiativeBox/InitiativeAmount.value
 	}
 	return save_dict
+
+
+func _on_initiative_amount_value_changed(value: float) -> void:
+	initiative_updated.emit()

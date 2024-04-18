@@ -38,3 +38,5 @@ text = "Initiative:"
 layout_mode = 2
 size_flags_horizontal = 8
 max_value = 40.0
+
+[connection signal="value_changed" from="PlayerDisplay/PlayerNameBox/InitiativeBox/InitiativeAmount" to="." method="_on_initiative_amount_value_changed"]

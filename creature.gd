@@ -1,6 +1,7 @@
 extends Control
 
 signal dupe_requested(data : Dictionary)
+signal initiative_updated
 
 @export var creatureName : String
 
@@ -91,3 +92,7 @@ func _on_save_pressed() -> void:
 
 func _on_duplicate_pressed() -> void:
 	dupe_requested.emit(get_save_dict())
+
+
+func _on_initiative_amount_value_changed(value: float) -> void:
+	initiative_updated.emit()
