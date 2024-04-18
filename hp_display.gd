@@ -7,12 +7,6 @@ extends HBoxContainer
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	update_values()
-
-
-func _on_damage_button_pressed() -> void:
-	hp -= $DamageAmount.value
-	update_values()
-
 	
 func update_values() -> void:
 	$CurrentHP.value = hp
@@ -40,3 +34,7 @@ func get_current_hp() -> int:
 	
 func get_ac() -> int:
 	return $AC.value
+
+
+func _on_current_hp_value_changed(value: float) -> void:
+	set_current_hp(value)
