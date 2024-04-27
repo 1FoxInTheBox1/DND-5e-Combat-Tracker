@@ -88,7 +88,7 @@ func _on_save_encounter_popup_window_closed(filename: String) -> void:
 			print("persistent node '%s' is missing a save() function, skipped" % node.name)
 			continue
 
-		var node_data = node.call("save")
+		var node_data = node.call("get_save_dict")
 		var json_string = JSON.stringify(node_data)
 		file.store_line(json_string)
 		

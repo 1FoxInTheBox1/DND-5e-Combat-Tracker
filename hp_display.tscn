@@ -7,8 +7,6 @@ offset_right = 1144.0
 offset_bottom = 31.0
 size_flags_horizontal = 2
 script = ExtResource("1_ykp7u")
-max_hp = 50
-hp = 50
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
@@ -27,6 +25,7 @@ text = "/"
 layout_mode = 2
 size_flags_horizontal = 2
 max_value = 999999.0
+select_all_on_focus = true
 
 [node name="Label3" type="Label" parent="."]
 layout_mode = 2
@@ -39,3 +38,4 @@ size_flags_horizontal = 4
 select_all_on_focus = true
 
 [connection signal="value_changed" from="CurrentHP" to="." method="_on_current_hp_value_changed"]
+[connection signal="value_changed" from="MaxHP" to="." method="_on_max_hp_value_changed"]

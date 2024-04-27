@@ -35,6 +35,8 @@ func get_current_hp() -> int:
 func get_ac() -> int:
 	return $AC.value
 
-
 func _on_current_hp_value_changed(value: float) -> void:
 	set_current_hp(value)
+
+func _on_max_hp_value_changed(value: float) -> void:
+	set_max_hp(value)
